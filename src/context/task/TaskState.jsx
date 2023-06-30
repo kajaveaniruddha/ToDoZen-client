@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import Taskcontext from "./Taskcontext";
-const host="http://localhost:5500"
+import { Taskcontext } from "./Taskcontext";
+const host = "http://localhost:5500";
+
 const TaskState = (props) => {
   const initialTasks = [];
   const [tasks, setTasks] = useState(initialTasks);
@@ -17,7 +18,7 @@ const TaskState = (props) => {
         },
       });
       const json = await response.json();
-      console.log(response);
+      // console.log(response);
       setTasks(json);
     } catch (error) {
       console.log(error);
@@ -45,16 +46,13 @@ const TaskState = (props) => {
 
   // delete task
   const deleteTask = async (id) => {
-    const response = await fetch(
-      `${host}/deletetask/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
-        },
-      }
-    );
+    const response = await fetch(`${host}/deletetask/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
     const json = await response.json();
     // console.log(json);
     const newTask = tasks.filter((it) => {
@@ -68,17 +66,14 @@ const TaskState = (props) => {
   const editTask = async (id, title, description) => {
     // api call
     try {
-      const response = await fetch(
-        `${host}/edittask/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ title, description }),
-        }
-      );
+      const response = await fetch(`${host}/edittask/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ title, description }),
+      });
       const json = await response.json();
       // console.log(json)
       let newtask = JSON.parse(JSON.stringify(tasks));
@@ -95,9 +90,17 @@ const TaskState = (props) => {
       console.log(error);
     }
   };
+
   return (
     <Taskcontext.Provider
-      value={{ tasks, setTasks, fetchTask, addTask, deleteTask, editTask }}
+      value={{
+        tasks,
+        setTasks,
+        fetchTask,
+        addTask,
+        deleteTask,
+        editTask,
+      }}
     >
       {props.children}
     </Taskcontext.Provider>

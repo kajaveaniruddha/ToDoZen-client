@@ -1,44 +1,22 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import Taskcontext from "../context/task/Taskcontext";
-import Taskitem from "./Taskitem";
+import { useContext, useRef, useEffect, useState } from "react";
+import {Taskcontext} from "../context/task/Taskcontext";
+import TaskComponent from "./TaskComponent";
 import Modal from "./Modal";
+import useTaskEdit from "../hooks/useTaskEdit";
 
 const Tasks = () => {
   //fetch-all
   const context = useContext(Taskcontext);
-  const { tasks, fetchTask, editTask } = context;
-  useEffect(() => {
-    fetchTask();
-  }, []);
-
-  //update
-  const [visibility, setVisibility] = useState(false);
-  const [updatedTask, setUpdatedTask] = useState({
-    id: "",
-    etitle: "",
-    edescription: "",
-  });
-  const updatetask = (currentTask) => {
-    setUpdatedTask({
-      id: currentTask._id,
-      etitle: currentTask.title,
-      edescription: currentTask.description,
-    });
-    refi.current.click();
-  };
-
-  const refi = useRef(null);
-
-  const handleChange = (e) => {
-    setUpdatedTask({ ...updatedTask, [e.target.name]: e.target.value });
-  };
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    // console.log("updating task", updatedTask);
-    editTask(updatedTask.id, updatedTask.etitle, updatedTask.edescription);
-    setVisibility(false);
-  };
+  const { tasks } = context;
+  const {
+    visibility,
+    setVisibility,
+    updatedTask,
+    updatetask,
+    refi,
+    handleChange,
+    handleClick,
+  } = useTaskEdit();
   return (
     <>
       {/* Modal */}
@@ -123,7 +101,7 @@ const Tasks = () => {
         {tasks.length === 0 && "Create a Task to display"}
         {tasks.map((iterator) => {
           return (
-            <Taskitem
+            <TaskComponent
               key={iterator._id}
               iterator={iterator}
               updatetask={updatetask}
