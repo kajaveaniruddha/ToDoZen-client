@@ -11,15 +11,14 @@ const useAssigneeEdit = () => {
 
   const updateAssignee = (id) => {
     fetchAssignees(id);
-    setUpdatedAssignee({ id: id, email: "",key:"" });
+    setUpdatedAssignee({ id: id, email: "" });
     setVisibility(true);
   };
 
-  const handleChange = (e) => {
+  const updater = (email) => {
     setUpdatedAssignee({
       ...updatedAssignee,
-      [e.target.name]: e.target.value,
-      key: e.target.value,
+      email:email
     });
   };
 
@@ -28,7 +27,6 @@ const useAssigneeEdit = () => {
     setUpdatedAssignee({
       id: updatedAssignee.id,
       email: "",
-      key:""
     });
   };
 
@@ -37,7 +35,7 @@ const useAssigneeEdit = () => {
     setVisibility,
     updateAssignee,
     updatedAssignee,
-    handleChange,
+    updater,
     handleClick,
   };
 };

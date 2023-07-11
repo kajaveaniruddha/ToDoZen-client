@@ -1,7 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-const host="http://localhost:5500"
+import { regSuccess, regFail, serverError } from "../utilities/Toasts";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+const host = "http://localhost:5500";
 const Register = () => {
   const [credentials, setCredentials] = useState({
     name: "",
@@ -27,32 +30,48 @@ const Register = () => {
         }),
       });
       const json = await response.json();
-      console.log(json);
-      if (json.success) {
+      // console.log(json); -->auth-token
+      if (response.status === 200) {
+        regSuccess();
         navigate("/");
-      } else {
-        alert("Re-try again");
+      } else if (response.status === 400) {
+        regFail();
       }
     } catch (error) {
+      serverError();
       console.log(error);
     }
   };
   return (
-    <div>
-      <form
-        className="space-y-6 ml-5 max-w-md"
-        action="submit"
-        method="POST"
-        onSubmit={handleClick}
+    <div className="absolute h-screen w-full bg-gradient-to-r from-indigo-950 to-fuchsia-950 min-w-min ">
+      <div className=" absolute h-screen w-full flex justify-evenly items-center blur-3xl opacity-50 ">
+        <div className=" w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-30" />
+        <div className=" w-96 h-96 bg-purple-400 rounded-full blur-3xl opacity-30" />
+      </div>
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
       >
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            name
-          </label>
-          <div className="mt-2">
+        <form
+          className="min-h-max w-1/2 z-10 absolute translate-x-1/2 right-1/2 -translate-y-1/2 top-1/2 bg-white bg-opacity-10 rounded-3xl backdrop-blur border-2 border-white border-opacity-5 drop-shadow-lg max-w-sm min-w-max"
+          action="submit"
+          method="POST"
+          onSubmit={handleClick}
+        >
+          <div className="flex flex-col m-3">
+            <h1 className="py-2 font-bold text-3xl drop-shadow-md bg-gradient-to-b from-white to-amber-400 bg-clip-text text-transparent">
+              Sign up
+            </h1>
+            <label
+              htmlFor="name"
+              className=" text-white mt-5 font-semibold text-base"
+            >
+              Name
+            </label>
             <input
               id="name"
               name="name"
@@ -62,18 +81,14 @@ const Register = () => {
               onChange={handleChange}
               value={credentials.name}
               minLength={3}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className=" border-2 border-white/10 rounded bg-white bg-opacity-10 text-white focus:border-inherit p-2"
             />
-          </div>
-        </div>
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            email
-          </label>
-          <div className="mt-2">
+            <label
+              htmlFor="email"
+              className=" text-white mt-5 font-semibold text-base"
+            >
+              Email
+            </label>
             <input
               id="email"
               name="email"
@@ -83,21 +98,14 @@ const Register = () => {
               onChange={handleChange}
               value={credentials.email}
               minLength={5}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className=" border-2 border-white/10 rounded bg-white bg-opacity-10 text-white focus:border-inherit "
             />
-          </div>
-        </div>
-
-        <div>
-          <div className="flex items-center justify-between">
             <label
               htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className=" text-white mt-5 font-semibold text-base"
             >
-              password
+              Password
             </label>
-          </div>
-          <div className="mt-2">
             <input
               id="password"
               name="password"
@@ -107,22 +115,28 @@ const Register = () => {
               value={credentials.password}
               onChange={handleChange}
               minLength={6}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="border-2 border-white/10 rounded bg-white bg-opacity-10 text-white focus:border-inherit "
             />
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-pink-500 to-pink-600 text-lg text-white font-semibold drop-shadow-sm hover:drop-shadow-xl hover:scale-105 transition-transform"
+              >
+                Register
+              </button>
+            </div>
+            <p className="flex justify-center mt-10 text-md drop-shadow-sm text-white/50">
+              Already registered?
+              <Link
+                to="/"
+                className="text-pink-500 font-semibold drop-shadow-md"
+              >
+                &nbsp;&nbsp;&nbsp;Login
+              </Link>
+            </p>
           </div>
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            // onClick={handleClick}
-            disabled={credentials.password.length < 6}
-          >
-            Register
-          </button>
-        </div>
-      </form>
+        </form>
+      </motion.div>
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const host="http://localhost:5500"
+import { Link } from "react-router-dom";
+import Model3d from "./Model3d";
+import { loginSuccess, loginFail, serverError } from "../utilities/Toasts";
+const host = "http://localhost:5500";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -23,81 +26,86 @@ const Login = () => {
       });
       const json = await response.json();
       // console.log(json);
-      if (json.success) {
+      if (response.status === 200) {
+        loginSuccess();
         //save the auth token and redirect
         localStorage.setItem("token", json.authtoken);
         navigate("/user");
       } else {
-        alert("invalid credentials");
+        loginFail();
       }
     } catch (error) {
+      serverError();
       console.log(error);
     }
   };
   return (
-    <div>
+    <>
       <form
-        className="space-y-6 ml-5 max-w-md"
+        className="min-h-max w-1/2 z-10 absolute translate-x-1/2 right-1/2 -translate-y-1/2 top-1/2 bg-white bg-opacity-10 rounded-3xl lg:w-1/3 lg:translate-x-1/3 lg:right-auto backdrop-blur border-2 border-white border-opacity-5 drop-shadow-lg max-w-sm min-w-max"
         action="submit"
         method="POST"
         onSubmit={handleClick}
       >
-        <div>
+        <div className="flex flex-col m-3">
+          <section className="py-2 font-bold text-3xl drop-shadow-md bg-gradient-to-b from-white to-amber-400 bg-clip-text text-transparent">
+            WELCOME to <br />
+            <h1 className=" font-extrabold">ToDoZen</h1>
+          </section>
           <label
             htmlFor="email"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="text-white mt-5 font-semibold text-base"
           >
-            email
+            Email
           </label>
-          <div className="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              onChange={handleChange}
-              value={credentials.email}
-              minLength={5}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-
-        <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              password
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              value={credentials.password}
-              onChange={handleChange}
-              minLength={6}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            onChange={handleChange}
+            value={credentials.email}
+            minLength={5}
+            className="border-2 border-white/10 rounded bg-white bg-opacity-10 text-white text-base focus:border-inherit"
+          />
+          <label
+            htmlFor="password"
+            className="text-white mt-5 font-semibold text-base"
           >
-            Login
-          </button>
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            required
+            value={credentials.password}
+            onChange={handleChange}
+            minLength={6}
+            className="border-2 border-white/10 rounded bg-white bg-opacity-10 text-white focus:border-inherit "
+          />
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-pink-500 to-pink-600 text-lg text-white font-semibold drop-shadow-sm hover:drop-shadow-xl hover:scale-105 transition-transform"
+            >
+              continue
+            </button>
+          </div>
+          <p className=" flex justify-center mt-10 text-md drop-shadow-sm text-white/50">
+            Are you registered?
+            <Link
+              to="/register"
+              className="text-pink-500 font-semibold drop-shadow-md"
+            >
+              &nbsp;&nbsp;&nbsp;Register
+            </Link>
+          </p>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

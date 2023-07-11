@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
-import {Taskcontext} from "../context/task/Taskcontext";
+import { Taskcontext } from "../context/task/Taskcontext";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+
 const AddTask = () => {
   const context = useContext(Taskcontext);
   const { addTask } = context;
@@ -14,64 +18,55 @@ const AddTask = () => {
     setNewTask({ title: "", description: "" });
   };
   return (
-    <div>
-      <form className="space-y-6 ml-5 max-w-md" action="submit" method="POST">
-        <div>
+    <form
+      className=" h-fit z-10 bg-black bg-opacity-25 rounded-xl backdrop-blur border-2 border-black border-opacity-5 drop-shadow-lg ml-5 mt-16 sticky top-16 w-full "
+      action="submit"
+      method="POST"
+      onSubmit={handleClick}
+    >
+      <div className="flex w-full">
+        <div className="w-full flex justify-start">
           <label
             htmlFor="title"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="text-white mt-2 ml-3 font-semibold text-base"
           >
-            title
+            NEW TASK -
           </label>
-          <div className="mt-2">
-            <input
-              id="title"
-              name="title"
-              type="title"
-              autoComplete="title"
-              value={newTask.title}
-              required
-              onChange={handleChange}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
+          <input
+            id="title"
+            name="title"
+            type="title"
+            autoComplete="title"
+            value={newTask.title}
+            required
+            onChange={handleChange}
+            minLength={2}
+            placeholder="Untitled"
+            className=" bg-black bg-opacity-0 text-white p-2"
+          />
         </div>
-
-        <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="description"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              description
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              id="description"
-              name="description"
-              type="description"
-              autoComplete="current-description"
-              value={newTask.description}
-              required
-              onChange={handleChange}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            onClick={handleClick}
-            disabled={newTask.title.length <= 2 || newTask.description.length <= 5}
-          >
-            Add Task
-          </button>
-        </div>
-      </form>
-    </div>
+        <button
+          type="submit"
+          className=" border-2 rounded bg-black bg-opacity-10 text-white focus:border-inherit px-2 mx-8 mt-2"
+        >
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
+      </div>
+      <div className="flex flex-col m-3">
+        <textarea
+          id="description"
+          name="description"
+          type="description"
+          autoComplete="current-description"
+          value={newTask.description}
+          required
+          onChange={handleChange}
+          minLength={5}
+          placeholder="Description"
+          className=" border-2 h-60 border-white/10 rounded bg-black bg-opacity-10 text-white focus:border-auto p-2 max-w-full max-h-full resize-y "
+        />
+      </div>
+    </form>
   );
 };
 

@@ -1,12 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { Assigneecontext } from "./Taskcontext";
+import {
+  CreatorIsAssignee,
+  AssigneeNotFound,
+  Unauthorized,
+  InvalidInput,
+} from "../../utilities/Toasts";
 const host = "http://localhost:5500";
 
 const AssigneeState = (props) => {
   const inititalAssignees = [];
   const [assigneeData, setAssigneeData] = useState(inititalAssignees);
-  //fetch all assignees a task
+  const initialUsers = [];
+  const [users, setUsers] = useState(initialUsers);
+
+  //fetch all assignees of a task
   const fetchAssignees = async (id) => {
     try {
       const response = await fetch(`${host}/allassignees/${id}`, {
@@ -36,7 +45,17 @@ const AssigneeState = (props) => {
       });
       const json = await response.json();
       // console.log(json);
-      setAssigneeData(json);
+      if (response.status === 200) {
+        setAssigneeData(json);
+      } else if (response.status === 403) {
+        CreatorIsAssignee();
+      } else if (response.status === 404) {
+        AssigneeNotFound();
+      } else if (response.status === 401) {
+        Unauthorized();
+      } else {
+        InvalidInput();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -58,13 +77,34 @@ const AssigneeState = (props) => {
     setAssigneeData(json);
     // console.log("Deleted a task: " + id);
   };
+
+  //fetch available assignees
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch(`${host}/allusers`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const json = await response.json();
+      // console.log(json);
+      setUsers(json);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Assigneecontext.Provider
       value={{
         assigneeData,
         fetchAssignees,
         addAssignee,
-        deleteAssignee
+        deleteAssignee,
+        users,
+        fetchUsers,
       }}
     >
       {props.children}

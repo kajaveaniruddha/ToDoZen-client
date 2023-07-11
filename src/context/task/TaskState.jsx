@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Taskcontext } from "./Taskcontext";
+import {taskAdded,taskNotAdded,taskDeleted,Unauthorized,serverError} from "../../utilities/Toasts";
 const host = "http://localhost:5500";
 
 const TaskState = (props) => {
+
   const initialTasks = [];
   const [tasks, setTasks] = useState(initialTasks);
 
@@ -37,9 +39,15 @@ const TaskState = (props) => {
         body: JSON.stringify({ title, description }),
       });
       const json = await response.json();
-      setTasks(tasks.concat(json)); //updated new incoming task
+      if (response.status === 200) {
+        taskAdded();
+        setTasks(tasks.concat(json)); //updated new incoming task
+      } else {
+        taskNotAdded();
+      }
       // console.log("New task added");
     } catch (error) {
+      serverError();
       console.log(error);
     }
   };
@@ -58,7 +66,13 @@ const TaskState = (props) => {
     const newTask = tasks.filter((it) => {
       return it._id !== id;
     });
-    setTasks(newTask);
+    if (response.status === 200) {
+      taskDeleted();
+      setTasks(newTask);
+    }
+    else{
+      Unauthorized();
+    }
     // console.log("Deleted a task: " + id);
   };
 
@@ -85,11 +99,19 @@ const TaskState = (props) => {
           break;
         }
       }
-      setTasks(newtask);
+      if (response.status === 200) {
+        setTasks(newtask);
+      } else if (response.status === 401) {
+        Unauthorized();
+      } else {
+        serverError();
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
+
 
   return (
     <Taskcontext.Provider
