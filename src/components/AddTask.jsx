@@ -42,12 +42,12 @@ const AddTask = () => {
             onChange={handleChange}
             minLength={2}
             placeholder="Untitled"
-            className=" bg-black bg-opacity-0 text-white p-2"
+            className="bg-black bg-opacity-0 text-white p-2"
           />
         </div>
         <button
           type="submit"
-          className=" border-2 rounded bg-black bg-opacity-10 text-white focus:border-inherit px-2 mx-8 mt-2"
+          className=" border-2 rounded bg-black bg-opacity-10 text-white focus:border-inherit px-2 mx-8 mt-2 hover:scale-105 active:scale-90"
         >
           <FontAwesomeIcon icon={faArrowRight} />
         </button>

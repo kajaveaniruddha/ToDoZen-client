@@ -14,7 +14,7 @@ const AssigneeComponent = (prop) => {
         <div className="w-full flex justify-end">
           <FontAwesomeIcon
             icon={faTrash}
-            className="mx-2 cursor-pointer"
+            className="mx-2 cursor-pointer "
             onClick={() => deleteAssignee(iteratorId, assignee.email)}
           />
         </div>

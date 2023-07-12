@@ -6,6 +6,7 @@ import {
   AssigneeNotFound,
   Unauthorized,
   InvalidInput,
+  serverError,
 } from "../../utilities/Toasts";
 const host = "http://localhost:5500";
 
@@ -73,9 +74,13 @@ const AssigneeState = (props) => {
       },
     });
     const json = await response.json();
-    // console.log(json);
-    setAssigneeData(json);
-    // console.log("Deleted a task: " + id);
+    if (response.status === 200) {
+      setAssigneeData(json);
+    } else if (response.status === 401) {
+      Unauthorized();
+    } else {
+      serverError();
+    }
   };
 
   //fetch available assignees

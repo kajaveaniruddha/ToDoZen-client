@@ -33,7 +33,7 @@ const TaskComponent = (prop) => {
   useEffect(() => {
     fetchUsers(); //all possible assignees
     handleTaskCreator(iterator.creator);
-  }, []);
+  }, [iterator._id]);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -72,17 +72,17 @@ const TaskComponent = (prop) => {
           <div className=" w-full flex justify-center">
             <FontAwesomeIcon
               icon={faTrash}
-              className=" cursor-pointer mx-3 "
+              className="hover:scale-110 active:scale-90 active:text-amber-500 ease-in-out duration-200 cursor-pointer mx-3 "
               onClick={() => deleteTask(iterator._id)}
             />
             <FontAwesomeIcon
               icon={faPenToSquare}
-              className=" cursor-pointer mx-3"
+              className="hover:scale-110 active:scale-90 active:text-amber-500 ease-in-out duration-200 cursor-pointer mx-3"
               onClick={() => updatetask(iterator)}
             />
             <FontAwesomeIcon
               icon={faContactCard}
-              className=" cursor-pointer mx-3"
+              className="hover:scale-110 active:scale-90 active:text-amber-500 ease-in-out duration-200 cursor-pointer mx-3"
               onClick={() => updateAssignee(iterator._id)}
             />
           </div>
@@ -129,7 +129,7 @@ const TaskComponent = (prop) => {
                 onClick={() => {
                   handleClick(), setInput(""), setFilteredUsers([]);
                 }}
-                className="hover:scale-110 drop-shadow-md transition-transform mt-3 text-white cursor-pointer mx-3"
+                className="hover:scale-110 active:scale-90 drop-shadow-md transition-transform mt-3 text-white cursor-pointer mx-3"
               />
             </form>
           </div>
@@ -141,7 +141,7 @@ const TaskComponent = (prop) => {
                   {filteredUsers.map((user) => (
                     <div
                       key={user.email}
-                      className=" transition-transform hover:shadow-xl hover:scale-105 hover:text-white cursor-pointer mx-2"
+                      className=" transition-transform hover:shadow-xl hover:scale-105 active:scale-95 hover:text-white cursor-pointer mx-2"
                       onClick={() => handleItemClick(user.email)}
                     >
                       {user.email}

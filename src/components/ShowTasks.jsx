@@ -17,6 +17,8 @@ const ShowTasks = () => {
     handleChange,
     handleClick,
   } = useTaskEdit();
+
+  const [items, setItems] = useState(tasks);
   return (
     <>
       <div className="w-full mt-12 ">
@@ -72,7 +74,7 @@ const ShowTasks = () => {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-yellow-400 to-amber-500 text-lg text-white font-semibold drop-shadow-sm hover:drop-shadow-xl hover:scale-105 transition-transform"
+                    className=" active:scale-95 mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-yellow-400 to-amber-500 text-lg text-white font-semibold drop-shadow-sm hover:drop-shadow-xl hover:scale-105 transition-transform"
                     onClick={handleClick}
                     disabled={
                       updatedTask.etitle.length <= 2 ||
