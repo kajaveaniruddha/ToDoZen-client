@@ -42,15 +42,14 @@ const Login = () => {
   return (
     <>
       <form
-        className="min-h-max w-1/2 z-10 absolute translate-x-1/2 right-1/2 -translate-y-1/2 top-1/2 bg-white bg-opacity-10 rounded-3xl lg:w-1/3 lg:translate-x-1/3 lg:right-auto backdrop-blur border-2 border-white border-opacity-5 drop-shadow-lg max-w-sm min-w-max"
+        className="min-h-max w-1/2 z-10 absolute translate-x-1/2 right-1/2 -translate-y-1/2 top-1/2 bg-white bg-opacity-10 rounded-3xl lg:w-1/3 lg:translate-x-3/4 lg:left-1/3 backdrop-blur border-2 border-white border-opacity-5 drop-shadow-lg max-w-sm min-w-max"
         action="submit"
         method="POST"
         onSubmit={handleClick}
       >
         <div className="flex flex-col m-3">
-          <section className="py-2 font-bold text-3xl drop-shadow-md bg-gradient-to-b from-white to-amber-400 bg-clip-text text-transparent">
-            WELCOME to <br />
-            <h1 className=" font-extrabold">ToDoZen</h1>
+          <section className="py-2 text-3xl drop-shadow-lg bg-[#FFC300] bg-clip-text text-transparent font-Raleway font-semibold">
+            Sign in
           </section>
           <label
             htmlFor="email"

@@ -13,6 +13,7 @@ const host = "http://localhost:5500";
 const AssigneeState = (props) => {
   const inititalAssignees = [];
   const [assigneeData, setAssigneeData] = useState(inititalAssignees);
+  //all users data except the logged-in one
   const initialUsers = [];
   const [users, setUsers] = useState(initialUsers);
 
@@ -100,6 +101,25 @@ const AssigneeState = (props) => {
       console.log(error);
     }
   };
+
+//fetch user data
+const fetchLoggedInUser = async () => {
+  try {
+    const response = await fetch(`${host}/getuser`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const json = await response.json();
+    // console.log(json);
+    setUsers(json);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
   return (
     <Assigneecontext.Provider

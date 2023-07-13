@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {faMinusSquare} from "@fortawesome/free-regular-svg-icons"
 import { useContext } from "react";
 import { Assigneecontext } from "../context/task/Taskcontext";
 const AssigneeComponent = (prop) => {
@@ -13,7 +13,7 @@ const AssigneeComponent = (prop) => {
         <h2 className="w-1/2 font-semibold">{assignee.name} </h2>
         <div className="w-full flex justify-end">
           <FontAwesomeIcon
-            icon={faTrash}
+            icon={faMinusSquare}
             className="mx-2 cursor-pointer "
             onClick={() => deleteAssignee(iteratorId, assignee.email)}
           />

@@ -43,10 +43,10 @@ const Register = () => {
     }
   };
   return (
-    <div className="absolute h-screen w-full bg-gradient-to-r from-indigo-950 to-fuchsia-950 min-w-min ">
+    <div className="absolute h-screen w-full bg-gradient-to-r from-[#13112f] to-[#2e0331] min-w-min ">
       <div className=" absolute h-screen w-full flex justify-evenly items-center blur-3xl opacity-50 ">
-        <div className=" w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-30" />
-        <div className=" w-96 h-96 bg-purple-400 rounded-full blur-3xl opacity-30" />
+        <div className=" w-96 h-96 bg-blue-800 rounded-full blur-3xl opacity-30" />
+        <div className=" w-96 h-96 bg-purple-800 rounded-full blur-3xl opacity-30" />
       </div>
       <motion.div
         initial={{
@@ -55,6 +55,7 @@ const Register = () => {
         animate={{
           opacity: 1,
         }}
+        transition={{ duration: 0.25 }}
       >
         <form
           className="min-h-max w-1/2 z-10 absolute translate-x-1/2 right-1/2 -translate-y-1/2 top-1/2 bg-white bg-opacity-10 rounded-3xl backdrop-blur border-2 border-white border-opacity-5 drop-shadow-lg max-w-sm min-w-max"
@@ -63,7 +64,7 @@ const Register = () => {
           onSubmit={handleClick}
         >
           <div className="flex flex-col m-3">
-            <h1 className="py-2 font-bold text-3xl drop-shadow-md bg-gradient-to-b from-white to-amber-400 bg-clip-text text-transparent">
+            <h1 className="py-2 text-3xl drop-shadow-md bg-[#FFC300] bg-clip-text text-transparent font-Raleway font-semibold">
               Sign up
             </h1>
             <label
@@ -120,7 +121,7 @@ const Register = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-pink-500 to-pink-600 text-lg text-white font-semibold drop-shadow-sm hover:drop-shadow-xl hover:scale-105 transition-transform"
+                className="mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-pink-500 to-pink-600 text-lg text-white font-semibold drop-shadow-sm hover:drop-shadow-xl hover:scale-105 active:scale-95 transition-transform"
               >
                 Register
               </button>

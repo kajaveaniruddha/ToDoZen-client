@@ -19,7 +19,7 @@ const AddTask = () => {
   };
   return (
     <form
-      className=" h-fit z-10 bg-black bg-opacity-25 rounded-xl backdrop-blur border-2 border-black border-opacity-5 drop-shadow-lg ml-5 mt-16 sticky top-16 w-full "
+      className=" h-fit z-10 bg-white bg-opacity-10 rounded-xl backdrop-blur border-2 border-white border-opacity-5 drop-shadow-2xl mx-5 md:mr-0 mt-16 sticky top-16 w-full "
       action="submit"
       method="POST"
       onSubmit={handleClick}
@@ -42,12 +42,12 @@ const AddTask = () => {
             onChange={handleChange}
             minLength={2}
             placeholder="Untitled"
-            className="bg-black bg-opacity-0 text-white p-2"
+            className="bg-white bg-opacity-0 text-white p-2"
           />
         </div>
         <button
           type="submit"
-          className=" border-2 rounded bg-black bg-opacity-10 text-white focus:border-inherit px-2 mx-8 mt-2 hover:scale-105 active:scale-90"
+          className=" border-2 rounded bg-white bg-opacity-0 text-white focus:border-inherit px-2 mx-8 mt-2 hover:scale-105 active:scale-90"
         >
           <FontAwesomeIcon icon={faArrowRight} />
         </button>
@@ -63,7 +63,7 @@ const AddTask = () => {
           onChange={handleChange}
           minLength={5}
           placeholder="Description"
-          className=" border-2 h-60 border-white/10 rounded bg-black bg-opacity-10 text-white focus:border-auto p-2 max-w-full max-h-full resize-y "
+          className=" border-2 h-60 border-white/10 rounded bg-white bg-opacity-5 text-white focus:border-auto p-2 max-w-full max-h-full resize-y "
         />
       </div>
     </form>

@@ -6,8 +6,18 @@ export default {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Nunito: ["Nunito"],
+        Raleway: ["Raleway"],
+        Ubuntu: ["Ubuntu"],
+        Pangolin: ["Pangolin"],
+      },
+    },
     darkMode: "class",
   },
-  plugins: [require("flowbite/plugin"), require("tailwind-scrollbar") ({ nocompatible: true })],
+  plugins: [
+    require("flowbite/plugin"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
 };

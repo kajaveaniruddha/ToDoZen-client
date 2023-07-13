@@ -16,9 +16,7 @@ const ShowTasks = () => {
     refi,
     handleChange,
     handleClick,
-  } = useTaskEdit();
-
-  const [items, setItems] = useState(tasks);
+  } = useTaskEdit(); 
   return (
     <>
       <div className="w-full mt-12 ">
@@ -74,7 +72,7 @@ const ShowTasks = () => {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className=" active:scale-95 mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-yellow-400 to-amber-500 text-lg text-white font-semibold drop-shadow-sm hover:drop-shadow-xl hover:scale-105 transition-transform"
+                    className=" active:scale-95 mt-10 w-full py-3 rounded-md bg-gradient-to-tr from-pink-500 to-pink-600 text-lg text-white font-semibold drop-shadow-md hover:drop-shadow-xl hover:scale-105 transition-transform"
                     onClick={handleClick}
                     disabled={
                       updatedTask.etitle.length <= 2 ||
@@ -91,7 +89,7 @@ const ShowTasks = () => {
 
         <div id="list" className="flex flex-wrap">
           {tasks.length === 0 && "Create a Task to display"}
-          {tasks.map((iterator, i) => {
+          {tasks.slice(0).reverse().map((iterator, i) => {
             return (
               <TaskComponent
                 i={i}
