@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Model3d from "./Model3d";
 import { loginSuccess, loginFail, serverError } from "../utilities/Toasts";
-const host = "http://localhost:5500";
+const host = "https://todozen-server.onrender.com";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });

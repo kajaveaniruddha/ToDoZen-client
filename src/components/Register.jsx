@@ -4,7 +4,7 @@ import { useState } from "react";
 import { regSuccess, regFail, serverError } from "../utilities/Toasts";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-const host = "http://localhost:5500";
+const host = "https://todozen-server.onrender.com";
 const Register = () => {
   const [credentials, setCredentials] = useState({
     name: "",

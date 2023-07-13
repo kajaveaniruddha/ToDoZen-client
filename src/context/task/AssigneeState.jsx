@@ -8,7 +8,7 @@ import {
   InvalidInput,
   serverError,
 } from "../../utilities/Toasts";
-const host = "http://localhost:5500";
+const host = "https://todozen-server.onrender.com";
 
 const AssigneeState = (props) => {
   const inititalAssignees = [];
