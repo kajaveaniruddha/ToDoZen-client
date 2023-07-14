@@ -4,6 +4,8 @@
 ToDoZen ,where productivity meets serenity. Experience seamless task management with our cloud-based web-app, combining efficiency and organization for a zen-like approach to getting things done. Effortlessly create, edit, and delete tasks, assign them to others, and collaborate with ease. Maximize your productivity and simplify task management with TodoZen.
 Let's get things done, together!
 
+App is live at: https://todozen-client.onrender.com/
+
 
 ## Screenshots
 Login / Landing page:
