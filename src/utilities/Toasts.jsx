@@ -111,7 +111,7 @@ export const loginSuccess = () => {
   });
 };
 export const loginFail = () => {
-  toast.error("User already exists", {
+  toast.error("Invalid credentials", {
     position: "top-center",
     autoClose: 3000,
     hideProgressBar: true,
