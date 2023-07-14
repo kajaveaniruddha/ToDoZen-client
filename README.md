@@ -89,3 +89,6 @@ Why `vite`?
  
 [Vite](https://vitejs.dev) was selected for its speed and straightforward configuration. The time invested in transitioning to Vite quickly paid off. Vite's Hot Module Replacement (HMR) feature ensured that changes were immediately reflected in the browser, and Speedy Web Compiler's (SWC) fast compilation times accelerated the build process. Despite its extensive capabilities, Vite remained user-friendly and did not impose limitations. Above all, using Vite allowed me to save time and provided a flexible tool that could easily integrate into any javascript project.
 
+## License 
+
+MIT License
