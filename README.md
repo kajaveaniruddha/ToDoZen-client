@@ -9,7 +9,7 @@ App is live at: https://todozen-client.onrender.com/
 
 ## Screenshots
 Login / Landing page:
-![Login / Landing page](https://raw.githubusercontent.com/kajaveaniruddha/ToDoZen-client/master/public/Login.png)
+![Login / Landing page](https://raw.githubusercontent.com/kajaveaniruddha/ToDoZen-client/Readme-Resources/public/Login.png)
 
 User page:
 
