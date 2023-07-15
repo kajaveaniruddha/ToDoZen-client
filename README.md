@@ -81,7 +81,7 @@ To handle authentication, I spent time researching and learning about OAuth, Aut
 The project resulted in a functioning cloud-based web application that allowed CRUD operations on tasks and user assignment. Authentication was successfully implemented using JWT. The chosen technology stack worked well together. The React-HashRouter component resolved the URL issue after deployment, ensuring a smooth user experience. Utilizing Vite for setup proved beneficial, as it provided speed, simplicity, and flexibility. In future iterations, I plan to enhance the project further by incorporating Redux for improved performance and scalability, as well as adding features such as task completion and categorization.
 
 ##
-Why `<HashRouter>` and not just `<Router>` ?
+Why `<HashRouter>` and not `<BrowserRouter>` ?
 
 I decided to use React-HashRouter instead of the traditional React Router in my project. This choice was made in response to an unforeseen issue that occurred after deploying the web application. The problem was that the browser couldn't send the URL to the server, which caused users to be prompted to sign in again whenever they refreshed a page. By utilizing React-HashRouter, I was able to overcome this obstacle. It resolved the issue by storing the current location in the hash portion of the URL, ensuring that it was not sent to the server. As a result, users' authentication status and session information remained intact, eliminating the need for them to sign in repeatedly. This adjustment improved the user experience in my deployed web application. Learn more about [HashRouter](https://reactrouter.com/en/main/router-components/hash-router).
 
