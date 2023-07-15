@@ -74,7 +74,7 @@ Build for production
 
 During my 5th semester, I undertook a two-week-long MERN project to apply the technologies I had learned up until that point and familiarize myself with new features' documentation. The goal was to build a cloud-based web application that allowed CRUD operations on tasks, along with features like task assignment to users in our database.
 
-My main tasks were to implement authentication and choose appropriate technologies for the project. I encountered challenges with authentication, which led me to conduct research on OAuth and Auth0. Eventually, I found a solution using  [JSON Web Tokens (JWT)](https://jwt.io) . Additionally, I needed to select the right technology stack and optimize the project setup for efficiency.
+My main challenge were to implement authentication and choose appropriate technologies for the project. I encountered challenges with authentication, which led me to conduct research on OAuth and Auth0. Eventually, I found a solution using  [JSON Web Tokens (JWT)](https://jwt.io) . Additionally, I needed to select the right technology stack and optimize the project setup for efficiency.
 
 To handle authentication, I spent time researching and learning about OAuth, Auth0, and JWT. After evaluating different options, I decided to implement JWT for authentication in my project. I invested time in understanding the documentation and integrating it into the application. For the technology stack, I chose Node, Express, Mongoose, React, JSX, React-HashRouter, ES6,Framer, and Tailwind CSS. I utilized the `npm create vite@latest my-react-app --template react` boilerplate for a quicker setup and focused more on exploring various technologies.
 
