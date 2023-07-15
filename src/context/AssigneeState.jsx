@@ -7,7 +7,7 @@ import {
   Unauthorized,
   InvalidInput,
   serverError,
-} from "../../utilities/Toasts";
+} from "../utilities/Toasts";
 const host = "https://todozen-server.onrender.com";
 
 const AssigneeState = (props) => {

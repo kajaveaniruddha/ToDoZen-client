@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Taskcontext } from "../context/task/Taskcontext";
+import { Taskcontext } from "../context/Taskcontext";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";

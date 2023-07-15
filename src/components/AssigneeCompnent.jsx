@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faMinusSquare} from "@fortawesome/free-regular-svg-icons"
 import { useContext } from "react";
-import { Assigneecontext } from "../context/task/Taskcontext";
+import { Assigneecontext } from "../context/Taskcontext";
 const AssigneeComponent = (prop) => {
   const { assignee, iteratorId } = prop;
   const Acontext = useContext(Assigneecontext);

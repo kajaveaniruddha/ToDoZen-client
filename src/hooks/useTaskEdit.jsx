@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import {Taskcontext} from "../context/task/Taskcontext";
+import {Taskcontext} from "../context/Taskcontext";
 const useTaskEdit = () => {
   const context = useContext(Taskcontext);
   const { fetchTask, editTask } = context;

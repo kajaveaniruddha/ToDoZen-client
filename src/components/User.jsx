@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import ShowTasks from "./ShowTasks";
-import TaskState from "../context/task/TaskState";
+import TaskState from "../context/TaskState";
 import AddTask from "./AddTask";
-import AssigneeState from "../context/task/AssigneeState";
+import AssigneeState from "../context/AssigneeState";
 import { useNavigate } from "react-router-dom";
 import LeftNavbar from "./LeftNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
-import { AnimatePresence, motion, spring } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const User = () => {
   const constraintParent = useRef();

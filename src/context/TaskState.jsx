@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Taskcontext } from "./Taskcontext";
-import {taskAdded,taskNotAdded,taskDeleted,Unauthorized,serverError} from "../../utilities/Toasts";
+import {taskAdded,taskNotAdded,taskDeleted,Unauthorized,serverError} from "../utilities/Toasts";
 const host = "https://todozen-server.onrender.com";
 
 const TaskState = (props) => {

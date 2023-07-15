@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Taskcontext } from "../context/task/Taskcontext";
+import { Taskcontext } from "../context/Taskcontext";
 import TaskComponent from "./TaskComponent";
 import Modal from "./Modal";
 import useTaskEdit from "../hooks/useTaskEdit";
@@ -18,7 +18,7 @@ const ShowTasks = () => {
     handleClick,
   } = useTaskEdit(); 
   return (
-    <>
+    <>{
       <div className="w-full mt-12 ">
         {/* Modal for editing a task*/}
         <div>
@@ -100,7 +100,7 @@ const ShowTasks = () => {
             );
           })}
         </div>
-      </div>
+      </div>}
     </>
   );
 };

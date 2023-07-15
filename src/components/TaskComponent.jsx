@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { useContext, useState, useEffect } from "react";
-import { Taskcontext, Assigneecontext } from "../context/task/Taskcontext";
+import { Taskcontext, Assigneecontext } from "../context/Taskcontext";
 import Modal from "./Modal";
 import AssigneeComponent from "./AssigneeCompnent";
 import useAssigneeEdit from "../hooks/useAssigneeEdit";

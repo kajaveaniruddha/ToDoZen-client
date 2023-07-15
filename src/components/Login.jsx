@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Model3d from "./Model3d";
 import { loginSuccess, loginFail, serverError } from "../utilities/Toasts";
 const host = "https://todozen-server.onrender.com";
 
