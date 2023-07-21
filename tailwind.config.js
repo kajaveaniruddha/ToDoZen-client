@@ -11,7 +11,6 @@ export default {
         Nunito: ["Nunito"],
         Raleway: ["Raleway"],
         Ubuntu: ["Ubuntu"],
-        Pangolin: ["Pangolin"],
       },
     },
     darkMode: "class",
