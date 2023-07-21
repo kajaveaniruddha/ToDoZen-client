@@ -14,6 +14,7 @@ const Navbar = () => {
         className="fixed text-white/95 align-baseline mx-5 hover:scale-110 active:scale-90 ease-in-out duration-200"
         onClick={() => setShowLinks(!showLinks)}
         whileTap={(!showLinks && { rotate: -90 }) || { rotate: 90 }}
+        aria-label="GitHub repo links"
       >
         <FontAwesomeIcon icon={faGithub} size="2x" />
       </motion.button>
