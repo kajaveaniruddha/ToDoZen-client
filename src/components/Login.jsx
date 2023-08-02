@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { loginSuccess, loginFail, serverError } from "../utilities/Toasts";
+import { ThreeCircles } from "react-loader-spinner";
 const host = "https://todozen-server.onrender.com";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -12,6 +14,7 @@ const Login = () => {
   let navigate = useNavigate();
   const handleClick = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch(`${host}/login`, {
         method: "POST",
@@ -27,19 +30,45 @@ const Login = () => {
       // console.log(json);
       if (response.status === 200) {
         loginSuccess();
+        setLoading(false);
         //save the auth token and redirect
         localStorage.setItem("token", json.authtoken);
         navigate("/user");
       } else {
         loginFail();
+        setLoading(false);
       }
     } catch (error) {
       serverError();
+      setLoading(false);
       console.log(error);
     }
+    setLoading(false);
   };
   return (
     <>
+      {loading && (
+        <div className="w-full h-full bg-black/60 absolute z-40">
+          <div className="absolute z-50 translate-x-1/2 translate-y-1/2 bottom-1/2 right-1/2">
+            <ThreeCircles
+              height="100"
+              width="100"
+              color="#4fa94d"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="three-circles-rotating"
+              outerCircleColor="#FFC300"
+              innerCircleColor="#ffffff"
+              middleCircleColor="#fe3a95"
+            />
+          </div>
+          <div className="absolute z-50 translate-x-1/2 translate-y-1/2 bottom-60 right-1/2 text-center text-white">
+            Rome wasn't built in a day, and neither was this server! <br />
+            Enjoy the suspenseful wait ...
+          </div>
+        </div>
+      )}
       <form
         className="min-h-max w-1/2 z-10 absolute translate-x-1/2 right-1/2 -translate-y-1/2 top-1/2 bg-white bg-opacity-10 rounded-3xl lg:w-1/3 lg:translate-x-3/4 lg:left-1/3 backdrop-blur border-2 border-white border-opacity-5 drop-shadow-lg max-w-sm min-w-max"
         action="submit"

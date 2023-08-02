@@ -4,8 +4,10 @@ import { useState } from "react";
 import { regSuccess, regFail, serverError } from "../utilities/Toasts";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ThreeCircles } from "react-loader-spinner";
 const host = "https://todozen-server.onrender.com";
 const Register = () => {
+  const [loading, setLoading] = useState();
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -17,6 +19,7 @@ const Register = () => {
   let navigate = useNavigate();
   const handleClick = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch(`${host}/register`, {
         method: "POST",
@@ -33,9 +36,11 @@ const Register = () => {
       // console.log(json); -->auth-token
       if (response.status === 200) {
         regSuccess();
+        setLoading(false);
         navigate("/");
       } else if (response.status === 400) {
         regFail();
+        setLoading(false);
       }
     } catch (error) {
       serverError();
@@ -48,6 +53,28 @@ const Register = () => {
         <div className=" w-96 h-96 bg-blue-800 rounded-full blur-3xl opacity-30" />
         <div className=" w-96 h-96 bg-purple-800 rounded-full blur-3xl opacity-30" />
       </div>
+      {loading && (
+        <div className="w-full h-full bg-black/60 absolute z-40">
+          <div className="absolute z-50 translate-x-1/2 translate-y-1/2 bottom-1/2 right-1/2">
+            <ThreeCircles
+              height="100"
+              width="100"
+              color="#4fa94d"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="three-circles-rotating"
+              outerCircleColor="#FFC300"
+              innerCircleColor="#ffffff"
+              middleCircleColor="#fe3a95"
+            />
+          </div>
+          <div className="absolute z-50 translate-x-1/2 translate-y-1/2 bottom-60 right-1/2 text-center text-white">
+            Rome wasn't built in a day, and neither was this server! <br />
+            Enjoy the suspenseful wait ...
+          </div>
+        </div>
+      )}
       <motion.div
         initial={{
           opacity: 0,
