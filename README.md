@@ -9,23 +9,23 @@ App is live at: https://todozen-client.onrender.com/
 
 ## Screenshots
 Login / Landing page:
-![Login / Landing page](https://raw.githubusercontent.com/kajaveaniruddha/ToDoZen-client/Readme-Resources/public/Login.png)
+![Login / Landing page](https://github.com/kajaveaniruddha/ToDoZen-client/assets/66174998/bf8e6404-7a08-4ab9-8e4a-b471e1bfa94e)
 
 User page:
 
 * Draggable Left Navbar.
 * CRUD operations on tasks can be performed here.
 * stationary material task assigned by mom as usual and you planning to go for sports.
-![user page](https://raw.githubusercontent.com/kajaveaniruddha/ToDoZen-client/264e14b0c5287752cd6173110179b6bfd6a54ce1/public/user.png)
+![user page](https://github.com/kajaveaniruddha/ToDoZen-client/assets/66174998/7081fe69-a463-4264-bf39-0e5a4c06abfe)
 
 Edit your tasks here:
-![edit page](https://raw.githubusercontent.com/kajaveaniruddha/ToDoZen-client/264e14b0c5287752cd6173110179b6bfd6a54ce1/public/edit%20task.png)
+![edit page](https://github.com/kajaveaniruddha/ToDoZen-client/assets/66174998/35eed04f-0c0e-441c-ad8b-10920a9767bf)
 
 Edit your task's assignees here:
 
 * The search bar allows users to filter assignees by typing their email and displaying matching names as results.
 * Add and delete assignees from here.
-![edit assignees page](https://raw.githubusercontent.com/kajaveaniruddha/ToDoZen-client/264e14b0c5287752cd6173110179b6bfd6a54ce1/public/assignees.png)
+![edit assignees page](https://github.com/kajaveaniruddha/ToDoZen-client/assets/66174998/eb5236c1-a5d3-44da-8f6a-2192418f77d5)
 
 
 ## Run Locally
